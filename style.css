@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   color: white;
-  background: linear-gradient(135deg, #050505, #0a0a1a);
+  background: linear-gradient(135deg, #000000, #020d1b);
   position: relative;
   overflow-x: hidden;
 }
@@ -16,8 +16,8 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle at center, rgba(80, 120, 255, 0.2), rgba(255, 255, 255, 0.05), transparent 80%);
-  filter: blur(150px);
+  background: radial-gradient(circle at center, rgba(80, 120, 255, 0.25), rgba(255, 255, 255, 0.08), transparent 80%);
+  filter: blur(180px);
   z-index: -1;
 }
 
@@ -88,21 +88,22 @@ nav a:hover {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 4px;
+  width: 6px;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(79, 163, 255, 0.6), rgba(0, 0, 0, 0));
+  background: linear-gradient(to bottom, rgba(79, 163, 255, 0.7), rgba(0, 0, 0, 0));
   z-index: 0;
+  border-radius: 10px;
 }
 
 .year-block {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 80px 0;
+  margin: 100px 0;
   position: relative;
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
   z-index: 1;
 }
 
@@ -112,13 +113,14 @@ nav a:hover {
 }
 
 .year {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 2.5rem;
+  font-weight: 700;
   flex: 1;
   position: relative;
+  color: #4fa3ff;
 }
 
-.year::before {
+.year[data-year]:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -128,12 +130,12 @@ nav a:hover {
   background: #4fa3ff;
   border-radius: 50%;
   border: 4px solid white;
-  box-shadow: 0 0 10px #4fa3ff;
+  box-shadow: 0 0 12px #4fa3ff;
   z-index: 2;
   left: 100%;
 }
 
-.year-block:nth-child(even) .year::before {
+.year-block:nth-child(even) .year:before {
   left: auto;
   right: 100%;
 }
@@ -141,28 +143,23 @@ nav a:hover {
 .content {
   flex: 2;
   max-width: 500px;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 30px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 35px;
   border-radius: 20px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 40px rgba(0, 60, 150, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
+  box-shadow: 0 0 60px rgba(0, 90, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .content:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 60px rgba(0, 110, 255, 0.6);
+  transform: scale(1.03);
+  box-shadow: 0 0 80px rgba(0, 110, 255, 0.5);
 }
 
 .year-block:nth-child(even) {
   flex-direction: row-reverse;
   text-align: right;
-}
-
-.year-block:nth-child(odd) {
-  flex-direction: row;
-  text-align: left;
 }
 
 footer {
@@ -198,8 +195,11 @@ footer {
     left: 20px;
   }
 
-  .year::before {
+  .year:before {
     left: -30px !important;
     right: auto !important;
   }
 }
+
+/* JavaScript pentru animatie numar an */
+/* Include in js/index.js sau inline la finalul paginii */
