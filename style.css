@@ -16,7 +16,7 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle at center, rgba(80, 120, 255, 0.25), rgba(255, 255, 255, 0.08), transparent 80%);
+  background: radial-gradient(circle at center, rgba(80, 121, 255, 0.397), rgba(255, 255, 255, 0.212), transparent 80%);
   filter: blur(180px);
   z-index: -1;
 }
