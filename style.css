@@ -79,20 +79,31 @@ nav a:hover {
 
 .timeline {
   padding: 50px 10%;
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 0;
 }
 
 .year-block {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  margin: 80px 0;
+  position: relative;
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 1;
 }
 
 .year-block.visible {
@@ -101,18 +112,30 @@ nav a:hover {
 }
 
 .year {
-  flex: 1 1 200px;
   font-size: 2rem;
   font-weight: 600;
+  flex: 1;
 }
 
 .content {
-  flex: 2 1 300px;
+  flex: 2;
+  max-width: 500px;
   background: rgba(255, 255, 255, 0.05);
   padding: 20px;
   border-radius: 16px;
   backdrop-filter: blur(15px);
   box-shadow: 0 0 20px rgba(0, 60, 150, 0.2);
+}
+
+/* Alternating layout */
+.year-block:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.year-block:nth-child(odd) {
+  flex-direction: row;
+  text-align: left;
 }
 
 footer {
@@ -126,8 +149,9 @@ footer {
 
 @media (max-width: 768px) {
   .year-block {
-    flex-direction: column;
+    flex-direction: column !important;
     align-items: flex-start;
+    text-align: left !important;
   }
 
   .hero h2 {
@@ -141,5 +165,9 @@ footer {
   nav a {
     margin-left: 10px;
     font-size: 0.9rem;
+  }
+
+  .timeline::before {
+    left: 20px;
   }
 }
