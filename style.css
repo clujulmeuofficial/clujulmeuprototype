@@ -1,5 +1,10 @@
 /* style.css */
 
+/* Performance optimizations */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -7,6 +12,10 @@ body {
   background: linear-gradient(135deg, #000000, #020d1b);
   position: relative;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 body::before {
@@ -16,9 +25,10 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle at center, rgba(80, 121, 255, 0.397), rgba(255, 255, 255, 0.212), transparent 80%);
+  background: radial-gradient(circle at center, rgba(80, 120, 255, 0.25), rgba(255, 255, 255, 0.08), transparent 80%);
   filter: blur(180px);
   z-index: -1;
+  will-change: transform, opacity;
 }
 
 header {
@@ -31,6 +41,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
+  will-change: background-color;
 }
 
 header h1 {
@@ -58,6 +69,7 @@ nav a:hover {
   text-align: center;
   background: url('hero.jpg') center/cover no-repeat;
   position: relative;
+  will-change: transform, opacity;
 }
 
 .hero::after {
@@ -80,6 +92,7 @@ nav a:hover {
 .timeline {
   padding: 50px 10%;
   position: relative;
+  will-change: transform, opacity;
 }
 
 .timeline::before {
@@ -105,6 +118,7 @@ nav a:hover {
   transform: translateY(60px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   z-index: 1;
+  will-change: transform, opacity;
 }
 
 .year-block.visible {
@@ -118,6 +132,7 @@ nav a:hover {
   flex: 1;
   position: relative;
   color: #4fa3ff;
+  will-change: transform, opacity;
 }
 
 .year[data-year]:before {
@@ -150,6 +165,7 @@ nav a:hover {
   box-shadow: 0 0 60px rgba(0, 90, 255, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
 }
 
 .content:hover {
