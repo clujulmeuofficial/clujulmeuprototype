@@ -1,46 +1,40 @@
-// js/script.js
-
 document.addEventListener("DOMContentLoaded", () => {
-  // Responsiveness for dynamic scaling and layout adjustments
-  const resizeObserver = new ResizeObserver(entries => {
-    for (let entry of entries) {
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-    }
-  });
+  // Ajustare responsive height
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 
-  resizeObserver.observe(document.body);
-
-  // Reveal year blocks on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
 
-        // Animate number for year
         const yearEl = entry.target.querySelector(".year");
-        const targetYear = +yearEl.dataset.year;
-        let current = 0;
+        const targetYear = parseInt(yearEl.dataset.year, 10);
+        let current = 1800;
 
-        const counter = setInterval(() => {
-          if (current < targetYear) {
-            current += Math.ceil((targetYear - current) / 10);
+        const animate = () => {
+          const diff = targetYear - current;
+          if (diff > 0) {
+            current += Math.ceil(diff / 12);
+            if (current > targetYear) current = targetYear;
             yearEl.textContent = current;
+            requestAnimationFrame(animate);
           } else {
             yearEl.textContent = targetYear;
-            clearInterval(counter);
           }
-        }, 30);
+        };
+
+        yearEl.textContent = current;
+        animate();
       }
     });
   }, {
-    threshold: 0.4
+    threshold: 0.3
   });
 
   document.querySelectorAll(".year-block").forEach(block => observer.observe(block));
 
-  // Device pixel ratio optimization
-  const dpr = window.devicePixelRatio || 1;
-  if (dpr > 1) {
+  // Optimizare pentru ecrane Retina
+  if (window.devicePixelRatio > 1) {
     document.body.classList.add("high-dpi");
   }
 });
