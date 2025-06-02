@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clujul Meu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #0f0f0f, #1a1a1a);
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(8px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      animation: slideDown 1s ease-out;
+    }
+    header h1 {
+      color: #fff;
+      font-size: 1.8rem;
+    }
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 2rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('background.jpg') center/cover no-repeat;
+      position: relative;
+      text-align: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .hero h2 {
+      position: relative;
+      color: white;
+      font-size: 3rem;
+      z-index: 1;
+      animation: fadeInUp 2s ease;
+    }
+    .timeline {
+      padding: 4rem 2rem;
+    }
+    .year-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .year-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .year {
+      font-size: 2rem;
+      font-weight: 600;
+      flex: 1;
+      text-align: center;
+    }
+    .content {
+      flex: 2;
+      background: #222;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 0 2rem;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #555;
+    }
+    @media (max-width: 768px) {
+      .year-block {
+        flex-direction: column;
+      }
+      .year, .content {
+        margin: 1rem 0;
+        text-align: center;
+      }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.2 });
+
+      document.querySelectorAll('.year-block').forEach(el => observer.observe(el));
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Clujul Meu</h1>
+    <nav>
+      <a href="#despre">Despre</a>
+      <a href="#evolutie">Evoluție</a>
+      <a href="contact.html">Contact</a>
+      <a href="projects.html">Proiecte</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Bine ai venit pe Clujul Meu</h2>
+  </section>
+
+  <section class="timeline" id="evolutie">
+    <div class="year-block">
+      <div class="year">2021</div>
+      <div class="content">
+        <p>Scrie aici despre începutul canalului tău în 2021.</p>
+      </div>
+    </div>
+    <div class="year-block">
+      <div class="year">2022</div>
+      <div class="content">
+        <p>Scrie aici despre evoluția canalului în 2022.</p>
+      </div>
+    </div>
+    <div class="year-block">
+      <div class="year">2023</div>
+      <div class="content">
+        <p>Scrie aici despre ce s-a întâmplat în 2023.</p>
+      </div>
+    </div>
+    <div class="year-block">
+      <div class="year">2024</div>
+      <div class="content">
+        <p>Detaliază parcursul tău în 2024.</p>
+      </div>
+    </div>
+    <div class="year-block">
+      <div class="year">2025</div>
+      <div class="content">
+        <p>Adaugă planurile sau realizările recente din 2025.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Clujul Meu. Toate drepturile rezervate.</p>
+  </footer>
+</body>
+</html>
 
