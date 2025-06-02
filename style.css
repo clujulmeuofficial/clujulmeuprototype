@@ -90,7 +90,7 @@ nav a:hover {
   transform: translateX(-50%);
   width: 4px;
   height: 100%;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(to bottom, rgba(79, 163, 255, 0.6), rgba(0, 0, 0, 0));
   z-index: 0;
 }
 
@@ -115,19 +115,46 @@ nav a:hover {
   font-size: 2rem;
   font-weight: 600;
   flex: 1;
+  position: relative;
+}
+
+.year::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #4fa3ff;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 10px #4fa3ff;
+  z-index: 2;
+  left: 100%;
+}
+
+.year-block:nth-child(even) .year::before {
+  left: auto;
+  right: 100%;
 }
 
 .content {
   flex: 2;
   max-width: 500px;
   background: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 16px;
-  backdrop-filter: blur(15px);
-  box-shadow: 0 0 20px rgba(0, 60, 150, 0.3);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 40px rgba(0, 60, 150, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Alternating layout */
+.content:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 60px rgba(0, 110, 255, 0.6);
+}
+
 .year-block:nth-child(even) {
   flex-direction: row-reverse;
   text-align: right;
@@ -169,5 +196,10 @@ footer {
 
   .timeline::before {
     left: 20px;
+  }
+
+  .year::before {
+    left: -30px !important;
+    right: auto !important;
   }
 }
