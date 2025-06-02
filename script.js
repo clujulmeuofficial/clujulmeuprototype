@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const yearEl = entry.target.querySelector(".year");
         const targetYear = parseInt(yearEl.dataset.year, 10);
-        let current = 1800;
+        let current = 2000;
 
         const animate = () => {
           const diff = targetYear - current;
