@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   color: white;
-  background: linear-gradient(135deg, #0f0f1a, #0a0a1f);
+  background: linear-gradient(135deg, #050505, #0a0a1a);
   position: relative;
   overflow-x: hidden;
 }
@@ -12,12 +12,12 @@ body {
 body::before {
   content: "";
   position: fixed;
-  top: -200px;
-  left: -200px;
-  width: 200vw;
-  height: 200vh;
-  background: radial-gradient(circle at center, rgba(0, 60, 150, 0.2), transparent 70%);
-  filter: blur(120px);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, rgba(80, 120, 255, 0.2), rgba(255, 255, 255, 0.05), transparent 80%);
+  filter: blur(150px);
   z-index: -1;
 }
 
@@ -124,7 +124,7 @@ nav a:hover {
   padding: 20px;
   border-radius: 16px;
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 20px rgba(0, 60, 150, 0.2);
+  box-shadow: 0 0 20px rgba(0, 60, 150, 0.3);
 }
 
 /* Alternating layout */
